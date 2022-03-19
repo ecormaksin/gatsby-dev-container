@@ -1,0 +1,3 @@
+[submodule "./src/my-first-gatsby-site"]
+	path = ./src/my-first-gatsby-site
+	url = git@github.com:ecormaksin/my-first-gatsby-site-2.git
