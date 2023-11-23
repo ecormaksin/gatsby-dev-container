@@ -8,10 +8,11 @@ services:
     ports:
       - 3000:3000
       - 8000:8000
-    command: tail -f /dev/null
     volumes:
-      - node-modules:/usr/local/lib/node_modules
+      - node-modules-global:/usr/local/lib/node_modules
+      - node-modules-site:/src/site/node_modules
       - ./src:/src
       - ./work:/work
 volumes:
-  node-modules:
+  node-modules-global:
+  node-modules-site:

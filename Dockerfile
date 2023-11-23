@@ -2,7 +2,10 @@ FROM debian:bookworm
 
 ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
 RUN apt-get -y update && \
+    \
     apt-get -y install \
         curl \
         git-all \
@@ -11,12 +14,17 @@ RUN apt-get -y update && \
     && \
     echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen ja_JP.UTF-8 && \
+    \
     TARGET_USER=gatsby && \
     adduser -q --gecos "" --disabled-login "${TARGET_USER}" && \
     echo "${TARGET_USER}:${TARGET_USER}" | chpasswd && \
     TARGET_USER_SUDOERS="/etc/sudoers.d/${TARGET_USER}" && \
     echo "${TARGET_USER} ALL=(ALL) NOPASSWD: ALL" > "${TARGET_USER_SUDOERS}" && \
-    chmod 440 "${TARGET_USER_SUDOERS}"
+    chmod 440 "${TARGET_USER_SUDOERS}" && \
+    \
+    chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 
 USER gatsby
 
