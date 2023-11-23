@@ -1,1 +1,5 @@
 .devcontainer/
+src/
+!src/.gitkeep
+work/
+!work/.gitkeep

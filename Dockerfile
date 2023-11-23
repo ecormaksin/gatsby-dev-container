@@ -1,8 +1,10 @@
-FROM node:16.14.2-buster-slim
-ENV LANG ja_JP.utf8
-RUN apt -y update && apt -y install git
-RUN npm install -g gatsby-cli
+FROM node:21.2.0
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN apt-get -y update && \
+    apt-get -y install locales && \
+    echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen ja_JP.UTF-8 \
+    npm install -g gatsby-cli
 
-CMD [ "node" ]
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
