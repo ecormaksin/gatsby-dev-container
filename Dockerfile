@@ -3,7 +3,12 @@ FROM debian:bookworm
 ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 RUN apt-get -y update && \
-    apt-get -y install curl locales sudo && \
+    apt-get -y install \
+        curl \
+        git-all \
+        locales \
+        sudo \
+    && \
     echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen ja_JP.UTF-8 && \
     TARGET_USER=gatsby && \
