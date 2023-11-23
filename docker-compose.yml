@@ -3,6 +3,7 @@ services:
   node:
     build:
       context: .
+    command: tail -f /dev/null
     environment:
       TZ: "Asia/Tokyo"
     ports:
