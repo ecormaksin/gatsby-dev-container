@@ -11,9 +11,7 @@ services:
       - 8000:8000
     volumes:
       - node-modules-global:/usr/local/lib/node_modules
-      - node-modules-site:/src/site/node_modules
       - ./src:/src
       - ./work:/work
 volumes:
   node-modules-global:
-  node-modules-site:
