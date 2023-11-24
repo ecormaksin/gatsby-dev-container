@@ -7,8 +7,8 @@ services:
     environment:
       TZ: "Asia/Tokyo"
     ports:
-      - 3000:3000
-      - 8000:8000
+      - "3000:3000"
+      - "8000:8000"
     volumes:
       - node-modules-global:/usr/local/lib/node_modules
       - ./src:/src
